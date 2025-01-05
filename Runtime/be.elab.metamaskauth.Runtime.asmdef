@@ -1,0 +1,16 @@
+{
+    "name": "be.elab.metamaskauth",
+    "rootNamespace": "",
+    "references": [
+        "be.elab.signmetamask"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
