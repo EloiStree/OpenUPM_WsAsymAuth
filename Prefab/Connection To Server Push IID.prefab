@@ -1,0 +1,198 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2961972893681846439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4389472447803567939}
+  - component: {fileID: 1096503138255481250}
+  - component: {fileID: 3901847554976030725}
+  - component: {fileID: 3878440476789875369}
+  - component: {fileID: 4483369383798424033}
+  m_Layer: 0
+  m_Name: Connection To Server Push IID
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4389472447803567939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961972893681846439}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1096503138255481250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961972893681846439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f58f2bffac0ace4c9c25e411acd829c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_serverUri: ws://193.150.14.47:4615/
+  m_signerReference: {fileID: 0}
+  m_tunnel:
+    m_connection:
+      m_launchState: 0
+      m_killSwitch:
+        m_needToBeKilled: 0
+      m_serverUri: 
+      m_runningThreadErrorHappened: 
+      m_runningListenerErrorHappened: 
+    m_handshake:
+      m_signInMessage: 
+      m_guidToSigned: 
+      m_signedMessage: 
+      m_receivedValideHankShake: 
+      m_receivedIndexLockValidation: 
+      m_isConnectionValidated: 0
+      m_connectionEstablishedAndVerified: 0
+      m_receiveGivenIndexLock: 0
+      m_givenIndexLock: -2147483648
+      m_inNameOfPublicAddress: 
+      m_coasterPublicAddress: 
+    m_signatureSample: 
+    m_timeDebug:
+      m_lastReceivedMessageTextDate: 
+      m_lastReceivedMessageBinaryDate: 
+      m_lastPushMessageTextDate: 
+      m_lastPushMessageBinaryDate: 
+    m_byteCountDebug:
+      m_receivedBinaryBytesCount: 0
+      m_receivedTextBytesCount: 0
+      m_sentBinaryBytesCount: 0
+      m_sentTextBytesCount: 0
+    m_runningState:
+      isStillRunning: 0
+      isRunningHandleTask: 0
+      isRunningListener: 0
+      isWebsocketConnected: 0
+      m_websocketState: 0
+  m_autoStart: 1
+  m_autoReconnect: 1
+  m_reconnectDelay: 5
+  m_runningState:
+    isStillRunning: 0
+    isRunningHandleTask: 0
+    isRunningListener: 0
+    isWebsocketConnected: 0
+    m_websocketState: 0
+  m_previousInteger: 0
+--- !u!114 &3901847554976030725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961972893681846439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699c90891ecd155438a2f4136f1c0adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_source: {fileID: 1096503138255481250}
+  m_onConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onDisconnected:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onHandshakeVerified:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onIndexLockChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onIndexLockChangedAndIsValide:
+    m_PersistentCalls:
+      m_Calls: []
+  m_publicKeyValidated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_indexLock: 0
+  m_publicKey: 
+--- !u!114 &3878440476789875369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961972893681846439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e477a24076d854384ea6eac8a253e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_connection: {fileID: 1096503138255481250}
+  m_onReceivedMessageUTF8:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4483369383798424033}
+        m_TargetAssemblyTypeName: TDD_ReceivedFromConnectToRelayServerTunnelingRsaMono,
+          be.elab.metamaskauth
+        m_MethodName: PushText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_onReceivedMessageBytes:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4483369383798424033}
+        m_TargetAssemblyTypeName: TDD_ReceivedFromConnectToRelayServerTunnelingRsaMono,
+          be.elab.metamaskauth
+        m_MethodName: PushBytes
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_catchExceptions: 0
+--- !u!114 &4483369383798424033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961972893681846439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c2a01f6ea68734f94cf9fde50f1c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_text: 
+  m_logReceivedText: []
+  m_maxLogSize: 10
+  m_binary: 
+  m_intIndex: 0
+  m_intValue: 0
+  m_utcDateMilliseconds: 0
+  m_receivedTime: 0
+  m_sendToReceivedLag: 0
