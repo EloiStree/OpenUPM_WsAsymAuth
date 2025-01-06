@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ReceivedFromConnectToRelayServerTunnelingRsaMono : MonoBehaviour
+public class ReceivedFromConnectToRelayServerTunnelingMono : MonoBehaviour
 {
 
-    public ConnectToServerTunnelingEthMaskMono m_connection;
+    public ConnectToServerTunnelingMetaMaskMono m_connection;
 
     public Queue<string> m_receivedFromServerUTF8 = new Queue<string>();
     public Queue<byte[]> m_receivedFromServerBytes = new Queue<byte[]>();

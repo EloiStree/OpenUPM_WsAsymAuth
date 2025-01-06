@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class TDD_ConnectToRelayServerTunnelingRsaMono : MonoBehaviour
+public class TDD_ConnectToRelayServerTunnelingMono : MonoBehaviour
 {
-    public ConnectToServerTunnelingEthMaskMono m_connection;
+    public ConnectToServerTunnelingMetaMaskMono m_connection;
 
     public string m_time = "";
 

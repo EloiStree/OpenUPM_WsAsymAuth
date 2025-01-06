@@ -1,4 +1,4 @@
-﻿using Nethereum.Signer;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,12 +8,12 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static EthMaskTunneling;
-using static EthMaskTunneling.WebSocketConnectionState;
+using static MetaMaskTunneling;
+using static MetaMaskTunneling.WebSocketConnectionState;
 
 public class EthMaskTunnelingTaskRunUtility {
 
-    public static void StartRunnningTunnel(WebsocketConnectionEthMaskTunneling tunnel)
+    public static void StartRunnningTunnel(WebsocketConnectionMetaMaskTunneling tunnel)
     {
         if (tunnel.HasStarted())
             throw new Exception("Already started");
@@ -21,7 +21,7 @@ public class EthMaskTunnelingTaskRunUtility {
        tunnel.m_connection.m_runningThread = t;
     }
 
-    public static async Task ConnectAndRun(WebsocketConnectionEthMaskTunneling tunnel)
+    public static async Task ConnectAndRun(WebsocketConnectionMetaMaskTunneling tunnel)
     {
         tunnel.m_connection.SetLaunchState(LaunchState.Launched);
         using (ClientWebSocket ws = new ClientWebSocket())
@@ -99,7 +99,7 @@ public class EthMaskTunnelingTaskRunUtility {
 
 
 
-    public static async Task ReceiveMessages(WebsocketConnectionEthMaskTunneling tunnel )
+    public static async Task ReceiveMessages(WebsocketConnectionMetaMaskTunneling tunnel )
     {
         ClientWebSocket webSocket = tunnel.m_connection.m_websocket;
         HandshakeConnectionState handshake = tunnel.m_handshake;

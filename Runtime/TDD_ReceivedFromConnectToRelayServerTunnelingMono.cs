@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TDD_ReceivedFromConnectToRelayServerTunnelingRsaMono : MonoBehaviour
+public class TDD_ReceivedFromConnectToRelayServerTunnelingMono : MonoBehaviour
 {
     public string m_text = "";
     public List<string> m_logReceivedText= new List<string>();

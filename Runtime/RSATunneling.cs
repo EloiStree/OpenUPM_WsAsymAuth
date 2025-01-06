@@ -4,7 +4,7 @@ using System.Net.WebSockets;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public partial class EthMaskTunneling
+public partial class MetaMaskTunneling
 {
     [System.Serializable]
     public class TrafficOutQueue

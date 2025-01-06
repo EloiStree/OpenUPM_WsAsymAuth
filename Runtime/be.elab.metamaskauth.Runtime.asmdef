@@ -2,7 +2,7 @@
     "name": "be.elab.metamaskauth",
     "rootNamespace": "",
     "references": [
-        "be.elab.signmetamask"
+        "be.elab.asymsigner"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

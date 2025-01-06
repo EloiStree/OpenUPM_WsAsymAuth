@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class EventAndIndexFromToServerTunnelingEthMaskMono : MonoBehaviour{
+public class EventAndIndexFromToServerTunnelingMono : MonoBehaviour{
 
-    public ConnectToServerTunnelingEthMaskMono m_source;
+    public ConnectToServerTunnelingMetaMaskMono m_source;
     public UnityEvent m_onConnected;
     public UnityEvent m_onDisconnected;
     public UnityEvent m_onHandshakeVerified;

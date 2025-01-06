@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Net.WebSockets;
 using UnityEngine;
-using static EthMaskTunneling.WebSocketConnectionState;
+using static MetaMaskTunneling.WebSocketConnectionState;
 
-public partial class EthMaskTunneling
+public partial class MetaMaskTunneling
 {
     [System.Serializable]
-    public class WebsocketConnectionEthMaskTunneling
+    public class WebsocketConnectionMetaMaskTunneling
     {
-        public IEthMaskCliboardableSigner m_messageSigner;
+        public IMaskSignerCliboardable m_messageSigner;
         public WebSocketConnectionState m_connection=new();
         public HandshakeConnectionState m_handshake=new ();
 
@@ -24,7 +24,7 @@ public partial class EthMaskTunneling
         public TrafficOutQueue m_pushInTunnel = new();
 
 
-         ~WebsocketConnectionEthMaskTunneling()
+         ~WebsocketConnectionMetaMaskTunneling()
         {
             CloseTunnel();
         }
@@ -58,7 +58,7 @@ public partial class EthMaskTunneling
             m_runningState.isStillRunning = m_connection.IsStillRunning();
         }
 
-        public void SetConnectionInfo(string serverURI,  IEthMaskCliboardableSigner signer)
+        public void SetConnectionInfo(string serverURI, IMaskSignerCliboardable signer)
         {
             m_connection.m_serverUri= serverURI;
             m_messageSigner = signer;

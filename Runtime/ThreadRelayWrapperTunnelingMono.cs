@@ -14,11 +14,11 @@ using UnityEngine.Events;
 /// <summary>
 /// This class need to be a bit clean;
 /// </summary>
-public class ThreadRelayWrapperTunnelingRsaMono : MonoBehaviour
+public class ThreadRelayWrapperTunnelingMono : MonoBehaviour
 {
 
 
-    public ConnectToServerTunnelingEthMaskMono m_toAffect;
+    public ConnectToServerTunnelingMetaMaskMono m_toAffect;
     public bool m_useUdpListener=true;
     public bool m_useUdpBroadcaster=true;
     public bool m_useUnityEvent = true;

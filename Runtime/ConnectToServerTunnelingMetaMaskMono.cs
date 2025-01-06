@@ -2,16 +2,23 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using UnityEngine;
-using static EthMaskTunneling;
+using static MetaMaskTunneling;
 
-public class ConnectToServerTunnelingEthMaskMono : MonoBehaviour
+
+
+/// <summary>
+/// I am a class that allows a websocket connection to be established with a server supporting a MetaMask clipboard connection.
+/// </summary>
+public class ConnectToServerTunnelingMetaMaskMono : MonoBehaviour
 {
-    [Header("Set RSA")]
+    [Header("Set Target")]
     public string m_serverUri = "ws://193.150.14.47:4615/";
-    public EthMaskMono_AbstractClipboardSigner m_signerReference;
 
-    public WebsocketConnectionEthMaskTunneling m_tunnel;
-    public EthMaskTunneling.TraffictInEvent m_trafficEvent;
+    [Header("Set Crpyto Signer")]
+    public MaskSignerMono_AbstractClipboardSigner m_signerReference;
+
+    public WebsocketConnectionMetaMaskTunneling m_tunnel;
+    public MetaMaskTunneling.TraffictInEvent m_trafficEvent;
 
 
 
@@ -20,7 +27,7 @@ public class ConnectToServerTunnelingEthMaskMono : MonoBehaviour
     public bool m_autoReconnect = true;   
     public float m_reconnectDelay = 5;
 
-    public void SetSignerToUse(EthMaskMono_AbstractClipboardSigner privateKeySigner) { 
+    public void SetSignerToUse(MaskSignerMono_AbstractClipboardSigner privateKeySigner) { 
         m_signerReference = privateKeySigner;
     }
 
@@ -65,7 +72,7 @@ public class ConnectToServerTunnelingEthMaskMono : MonoBehaviour
 
 
     
-    public EthMaskTunneling.DebugRunningState m_runningState;
+    public MetaMaskTunneling.DebugRunningState m_runningState;
     private void Update()    
     {
         m_runningState = m_tunnel.m_runningState;
@@ -97,15 +104,15 @@ public class ConnectToServerTunnelingEthMaskMono : MonoBehaviour
 
     private void LaunchNewConnection()
     {
-        WebsocketConnectionEthMaskTunneling c = new WebsocketConnectionEthMaskTunneling();
-        c.SetConnectionInfo(m_serverUri, (IEthMaskCliboardableSigner) m_signerReference);
+        WebsocketConnectionMetaMaskTunneling c = new WebsocketConnectionMetaMaskTunneling();
+        c.SetConnectionInfo(m_serverUri, (IMaskSignerCliboardable) m_signerReference);
         HookTunnelEventToMonoScript(c);
         c.StartConnection();
         m_tunnel = c;
     }
 
 
-    private void HookTunnelEventToMonoScript(WebsocketConnectionEthMaskTunneling c)
+    private void HookTunnelEventToMonoScript(WebsocketConnectionMetaMaskTunneling c)
     {
         c.m_trafficEvent.m_onThreadMessagePushedBinary = OnMessagePushedBinary;
         c.m_trafficEvent.m_onThreadMessagePushedText = OnMessagePushedText;
