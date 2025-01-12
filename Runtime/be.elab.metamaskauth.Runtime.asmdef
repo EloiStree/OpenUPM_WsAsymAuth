@@ -2,7 +2,8 @@
     "name": "be.elab.metamaskauth",
     "rootNamespace": "",
     "references": [
-        "be.elab.asymsigner"
+        "be.elab.asymsigner",
+        "be.elab.pBit4096B58Pkcs1SHA256"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
