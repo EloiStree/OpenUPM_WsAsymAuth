@@ -243,9 +243,18 @@ public class ConnectToServerTunnelingMetaMaskMono : MonoBehaviour
         PushMessageIntegerIID(UnityEngine.Random.Range(0,100));
     }
 
+
+    public void PushMessageIntegerIIDWithSecondsDelay(int value, float delayInSeconds)
+    {
+        GetCurrentNtpTimeNowUTC(out long timeInTick);
+        timeInTick += (long)(delayInSeconds * TimeSpan.TicksPerSecond);
+        PushMessageIntegerIID(value, timeInTick);
+    }
+
     public void PushMessageIntegerIID(int value)
     {
-        PushMessageIntegerIID(value, DateTime.UtcNow.Ticks);
+        GetCurrentNtpTimeNowUTC(out long timeInTick);
+        PushMessageIntegerIID(value, timeInTick);
     }
     public void PushMessageIntegerIID(int value, long tickUtcTimestamp) { 
     
@@ -265,5 +274,19 @@ public class ConnectToServerTunnelingMetaMaskMono : MonoBehaviour
         m_tunnel.PushClampedBytesAsIID(bytes);
     }
 
+    public void GetCurrentNtpTimeNowUTC(out long utcNtpTickTime)
+    {
+        long tick = DateTime.UtcNow.Ticks;
+        utcNtpTickTime = tick + m_tickOffsetLocalToNtp;
+
+    }
+
+
+    public long m_tickOffsetLocalToNtp;
+
+    public void SetNtpOffsetLocalToOffset(long offset)
+    {
+        m_tickOffsetLocalToNtp = offset;
+    }
     
 }
