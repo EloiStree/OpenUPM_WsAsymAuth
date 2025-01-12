@@ -1,6 +1,6 @@
 
 {                                                                                
-  "name": "be.elab.metamaskauth",                              
+  "name": "be.elab.wsmetamaskauth",                              
   "displayName": "MetaMask Tunneling Auth Client",                        
   "version": "0.0.1",                         
   "unity": "2018.1",                             
@@ -11,7 +11,7 @@
   "relatedPackages":{},     
   "samples" : [],     
   "author" : {
-"name":"",
+"name":"Eloi Stree",
 "mail":"",
 "url":""},     
   "repository":{
