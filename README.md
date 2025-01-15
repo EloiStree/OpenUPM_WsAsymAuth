@@ -47,5 +47,5 @@ This package is designed to be used in the context of this tunneling package:
 The goal here is to be able to communicated between library in ETH and Unity in RSA with WebSocket server:
 - https://github.com/EloiStree/OpenUPM_pBit4096B58Pkcs1SHA256
   - https://github.com/EloiStree/OpenUPM_AsymmetricalClipboardCoaster
-    -https://github.com/EloiStree/OpenUPM_WsMetaMaskAuth
+    - https://github.com/EloiStree/OpenUPM_WsMetaMaskAuth
 - https://github.com/EloiStree/OpenUPM_IID.git
