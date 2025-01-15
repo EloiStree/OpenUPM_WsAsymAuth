@@ -1,6 +1,6 @@
 
 
-# 2025_01_01_UnityServerTunnelingMetaMaskUnity
+# OpenUPM: WsMetaMaskAuth
 
 WebSocket tunnel between Unity3D and a server running asymmetric encryption with MetaMask as the identity verification mechanism.  
 This setup allows any public-private key system to establish a connection handshake via WebSocket from Unity3D.
