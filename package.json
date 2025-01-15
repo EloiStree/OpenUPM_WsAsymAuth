@@ -1,23 +1,27 @@
-
-{                                                                                
-  "name": "be.elab.wsmetamaskauth",                              
-  "displayName": "MetaMask Tunneling Auth Client",                        
-  "version": "0.0.1",                         
-  "unity": "2018.1",                             
-  "unityRelease": "",                             
-  "description": "WebSocket tunnel between Unity3D and a server running ETH/MetaMask for claim identification.",                         
-  "keywords": ["Script","Tool"],                       
-  "dependencies":{},     
-  "relatedPackages":{},     
-  "samples" : [],     
-  "author" : {
-"name":"Eloi Stree",
-"mail":"",
-"url":""},     
-  "repository":{
-"type":"Git",
-"url":"https://github.com/EloiStree/2025_01_01_UnityServerTunnelingMetaMaskUnity.git",
-"footprint":"",
-"revision":""},     
-  "category": "Script"                   
-} 
+{
+  "name": "be.elab.wsmetamaskauth",
+  "displayName": "MetaMask Tunneling Auth Client",
+  "version": "2025.1.1540449",
+  "unity": "2018.1",
+  "unityRelease": "",
+  "description": "WebSocket tunnel between Unity3D and a server running ETH/MetaMask for claim identification.",
+  "keywords": ["Script", "Tool"],
+  "relatedPackages": {},
+  "samples": [],
+  "author": {
+    "name": "Eloi Stree",
+    "mail": "",
+    "url": ""
+  },
+  "repository": {
+    "type": "Git",
+    "url": "https://github.com/EloiStree/2025_01_01_UnityServerTunnelingMetaMaskUnity.git",
+    "footprint": "",
+    "revision": ""
+  },
+  "category": "Script",
+  "dependencies": {
+    "be.elab.pbit4096b58pkcs1sha256": "1.0.0",
+    "be.elab.asymsigner": "1.0.0"
+  }
+}
