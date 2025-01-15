@@ -1,6 +1,6 @@
 
 
-# 2025_01_01_UnityServerTunnelingMetaMaskUnity
+# OpenUPM: WsMetaMaskAuth
 
 WebSocket tunnel between Unity3D and a server running asymmetric encryption with MetaMask as the identity verification mechanism.  
 This setup allows any public-private key system to establish a connection handshake via WebSocket from Unity3D.
@@ -39,3 +39,13 @@ This package is designed to be used in the context of this tunneling package:
   - Generate and store RSA keys:  
     - [https://github.com/EloiStree/2024_04_04_GenereteRsaKeyInUnity.git](https://github.com/EloiStree/2024_04_04_GenereteRsaKeyInUnity.git)  
     - [https://github.com/EloiStree/2024_08_06_PathTypeReadWrite.git](https://github.com/EloiStree/2024_08_06_PathTypeReadWrite.git)  
+
+
+
+---------------
+**In short:**  
+The goal here is to be able to communicated between library in ETH and Unity in RSA with WebSocket server:
+- https://github.com/EloiStree/OpenUPM_pBit4096B58Pkcs1SHA256
+  - https://github.com/EloiStree/OpenUPM_AsymmetricalClipboardCoaster
+    - https://github.com/EloiStree/OpenUPM_WsMetaMaskAuth
+- https://github.com/EloiStree/OpenUPM_IID.git
