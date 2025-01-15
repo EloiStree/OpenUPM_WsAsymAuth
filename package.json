@@ -1,7 +1,7 @@
 {
   "name": "be.elab.wsmetamaskauth",
   "displayName": "MetaMask Tunneling Auth Client",
-  "version": "2025.1.1540449",
+  "version": "2025.1.16",
   "unity": "2018.1",
   "unityRelease": "",
   "description": "WebSocket tunnel between Unity3D and a server running ETH/MetaMask for claim identification.",
