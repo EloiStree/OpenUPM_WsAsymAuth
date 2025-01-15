@@ -22,6 +22,7 @@
   "category": "Script",
   "dependencies": {
     "be.elab.pbit4096b58pkcs1sha256": "1.0.0",
-    "be.elab.asymsigner": "1.0.0"
+    "be.elab.asymsigner": "1.0.0",
+    "be.elab.unityfetchoffsetntp": "1.0.0"
   }
 }
