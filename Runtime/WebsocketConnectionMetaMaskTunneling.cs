@@ -30,9 +30,10 @@ namespace Eloi.WsMetaMaskAuth
 
         public TraffictInEvent m_trafficEvent = new();
         public TrafficOutQueue m_pushInTunnel = new();
+        [Tooltip("If the server allows SHA256 connection.")]
+        public string m_passwordSha256;
 
-
-         ~WebsocketConnectionMetaMaskTunneling()
+        ~WebsocketConnectionMetaMaskTunneling()
         {
             CloseTunnel();
         }
@@ -70,10 +71,15 @@ namespace Eloi.WsMetaMaskAuth
         {
             m_connection.m_serverUri= serverURI;
             m_messageSigner = signer;
-            m_messageSigner.GetClipboardSignedMessage("Hello Tunnel", out m_signatureSample);
+            if (m_messageSigner != null)
+                m_messageSigner.GetClipboardSignedMessage("Hello Tunnel", out m_signatureSample);
+        }
+        public void SetPasswordSHA256(string sha256SignIn)
+        {
+            m_passwordSha256= sha256SignIn;
         }
 
-        public void StartConnection()
+            public void StartConnection()
         {
             if (!HasStarted()) { 
                 EthMaskTunnelingTaskRunUtility.StartRunnningTunnel(this);
@@ -186,8 +192,8 @@ namespace Eloi.WsMetaMaskAuth
             return m_handshake.m_coasterPublicAddress;
         }
 
- 
-    }
+           
+        }
         [System.Serializable]
         public class TrafficOutQueue
         {

@@ -22,6 +22,11 @@ namespace Eloi.WsMetaMaskAuth
             tunnel.m_connection.m_runningThread = t;
         }
 
+        private static string m_dateFormat = "yyyy-MM-dd HH:mm:ss.fff";
+        public static string  GetDateNowAsStringForDebug() { 
+            return DateTime.UtcNow.ToString(m_dateFormat);
+        }
+
         public static async Task ConnectAndRun(WebsocketConnectionMetaMaskTunneling tunnel)
         {
             tunnel.m_connection.SetLaunchState(LaunchState.Launched);
@@ -49,25 +54,11 @@ namespace Eloi.WsMetaMaskAuth
                         if (tunnel.IsInMustBeKillMode())
                             throw new Exception("Force close");
 
-                        //if (!handshake.m_connectionEstablishedAndVerified)
-                        //{
-                        //    //if (handshake.m_sentHello.Length == 0)
-                        //    //{
-                        //    //    string helloToSent = "Hello " + tunnel.GetPublicAddress();
-                        //    //    handshake.m_sentHello = helloToSent;
-                        //    //    byte[] b = Encoding.UTF8.GetBytes(helloToSent);
-                        //    //    await ws.SendAsync(new ArraySegment<byte>(b), WebSocketMessageType.Text, true, CancellationToken.None);
-                        //    //}
-
-                        //}
-
-
-                        //tunnel.m_byteCountDebug.m_datetimeNow = DateTime.UtcNow.Ticks;
 
                         Queue<string> queueText = tunnel.m_pushInTunnel.m_toSendToTheServerUTF8;
                         while (queueText.Count > 0)
                         {
-                            tunnel.m_timeDebug.m_lastPushMessageTextDate = DateTime.UtcNow.ToString();
+                            tunnel.m_timeDebug.m_lastPushMessageTextDate = GetDateNowAsStringForDebug();
                             if (tunnel.m_trafficEvent.m_onThreadMessagePushedText != null)
                                 tunnel.m_trafficEvent.m_onThreadMessagePushedText(queueText.Peek());
                             byte[] messageBytes = Encoding.UTF8.GetBytes(queueText.Dequeue());
@@ -77,7 +68,7 @@ namespace Eloi.WsMetaMaskAuth
                         Queue<byte[]> queueBytes = tunnel.m_pushInTunnel.m_toSendToTheServerBytes;
                         while (queueBytes.Count > 0)
                         {
-                            tunnel.m_timeDebug.m_lastPushMessageBinaryDate = DateTime.UtcNow.ToString();
+                            tunnel.m_timeDebug.m_lastPushMessageBinaryDate = GetDateNowAsStringForDebug();
                             if (tunnel.m_trafficEvent.m_onThreadMessagePushedBinary != null)
                                 tunnel.m_trafficEvent.m_onThreadMessagePushedBinary(queueBytes.Peek());
                             byte[] messageBytes = queueBytes.Dequeue();
@@ -117,7 +108,7 @@ namespace Eloi.WsMetaMaskAuth
                     if (result.MessageType == WebSocketMessageType.Text)
                     {
                         tunnel.m_byteCountDebug.m_receivedTextBytesCount += result.Count;
-                        tunnel.m_timeDebug.m_lastReceivedMessageTextDate = DateTime.UtcNow.ToString();
+                        tunnel.m_timeDebug.m_lastReceivedMessageTextDate = GetDateNowAsStringForDebug();
                         string receivedMessage = Encoding.UTF8.GetString(buffer, 0, result.Count);
                         if (tunnel.m_trafficEvent.m_onThreadMessageReceivedText != null)
                             tunnel.m_trafficEvent.m_onThreadMessageReceivedText(receivedMessage);
@@ -126,25 +117,36 @@ namespace Eloi.WsMetaMaskAuth
                         {
                             if (receivedMessage.ToUpper().StartsWith("SIGN:"))
                             {
-                                UnityEngine.Debug.Log("RECEIVED: " + receivedMessage);
+                                if (tunnel.m_messageSigner == null)
+                                {
+                                    tunnel.m_passwordSha256 = tunnel.m_passwordSha256.Trim();
+                                    if (!string.IsNullOrEmpty(tunnel.m_passwordSha256)) {
 
-                                string guid = receivedMessage.Replace("SIGN:", "");
-                                handshake.m_isConnectionValidated = true;
-                                handshake.m_signInMessage = receivedMessage;
-                                handshake.m_guidToSigned = guid;
+                                        if (tunnel.m_passwordSha256.Length != 64) { 
+                                            Bit4096B58Pkcs1SHA256.TextToSHA256(tunnel.m_passwordSha256, out string sha256);
+                                            tunnel.m_passwordSha256 = sha256;
+                                        }
 
-                                tunnel.m_messageSigner.GetClipboardSignedMessage(guid, out string signedGuid);
-                                handshake.m_signedMessage = signedGuid;
-                                UnityEngine.Debug.Log("B : " + signedGuid);
-                                byte[] signatureBytes = Encoding.UTF8.GetBytes(signedGuid);
-                                UnityEngine.Debug.Log("Sending signature: " + signedGuid);
-                                await webSocket.SendAsync(new ArraySegment<byte>(signatureBytes), WebSocketMessageType.Text, true, CancellationToken.None);
-                                UnityEngine.Debug.Log("Sent signature: " + signatureBytes);
+                                        await webSocket.SendAsync(new ArraySegment<byte>(
+                                            Encoding.UTF8.GetBytes("SHA256:" + tunnel.m_passwordSha256)),
+                                            WebSocketMessageType.Text, true, CancellationToken.None);
+                                    }
+                                }
+                                else { 
+                                    string guid = receivedMessage.Replace("SIGN:", "");
+                                    handshake.m_isConnectionValidated = true;
+                                    handshake.m_signInMessage = receivedMessage;
+                                    handshake.m_guidToSigned = guid;
+                                    tunnel.m_messageSigner.GetClipboardSignedMessage(guid, out string signedGuid);
+                                    handshake.m_signedMessage = signedGuid;
+                                    byte[] signatureBytes = Encoding.UTF8.GetBytes(signedGuid);
+                                    await webSocket.SendAsync(new ArraySegment<byte>(signatureBytes), WebSocketMessageType.Text, true, CancellationToken.None);
+                                   
+                                }
 
                             }
                             else if (receivedMessage.ToUpper().StartsWith("HELLO "))
                             {
-                                UnityEngine.Debug.Log("Received hello: " + receivedMessage);
                                 string[] splitPiece = receivedMessage.Split(" ");
                                 if (splitPiece.Length >= 2)
                                 {
@@ -184,7 +186,7 @@ namespace Eloi.WsMetaMaskAuth
                     else if (result.MessageType == WebSocketMessageType.Binary)
                     {
                         tunnel.m_byteCountDebug.m_receivedBinaryBytesCount += result.Count;
-                        tunnel.m_timeDebug.m_lastReceivedMessageBinaryDate = DateTime.UtcNow.ToString();
+                        tunnel.m_timeDebug.m_lastReceivedMessageBinaryDate = GetDateNowAsStringForDebug();
                         byte[] receivedMessage = new byte[result.Count];
                         Array.Copy(buffer, receivedMessage, result.Count);
                         if (tunnel.m_trafficEvent.m_onThreadMessageReceivedBinary != null)

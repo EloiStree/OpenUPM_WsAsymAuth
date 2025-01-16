@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 using static Eloi.WsMetaMaskAuth.MetaMaskTunneling;
 namespace Eloi.WsMetaMaskAuth
@@ -17,6 +18,8 @@ namespace Eloi.WsMetaMaskAuth
 
         [Header("Set Crpyto Signer")]
         public MaskSignerMono_AbstractClipboardSigner m_signerReference;
+        [Tooltip("If you don't use signer and the server support SHA256 login")]
+        public string m_signWithSHA256Password = "";
 
         public WebsocketConnectionMetaMaskTunneling m_tunnel;
         public MetaMaskTunneling.TraffictInEvent m_trafficEvent;
@@ -27,6 +30,29 @@ namespace Eloi.WsMetaMaskAuth
         public bool m_autoStart = true;
         public bool m_autoReconnect = true;
         public float m_reconnectDelay = 5;
+
+
+      
+        public void GetDefaultPasswordSHA256(out string password)
+        {
+            password = m_signWithSHA256Password;
+        }
+
+        [ContextMenu("SHA256 the password field")]
+        public void SetSha256DefaultPasswordFromInspector()
+        {
+            ParseToSHA256(m_signWithSHA256Password);
+        }
+
+       
+
+        public string ParseToSHA256(string password)
+        {
+            Bit4096B58Pkcs1SHA256.
+                TextToSHA256(password, out string hashed);
+            return hashed;
+        }
+
 
         public void SetSignerToUse(MaskSignerMono_AbstractClipboardSigner privateKeySigner)
         {
@@ -42,6 +68,11 @@ namespace Eloi.WsMetaMaskAuth
         private void OnDestroy()
         {
             m_tunnel.CloseTunnel();
+        }
+        private void Awake()
+        {
+
+            SetSha256DefaultPasswordFromInspector();
         }
         void Start()
         {
@@ -110,6 +141,7 @@ namespace Eloi.WsMetaMaskAuth
         {
             WebsocketConnectionMetaMaskTunneling c = new WebsocketConnectionMetaMaskTunneling();
             c.SetConnectionInfo(m_serverUri, (IMaskSignerCliboardable)m_signerReference);
+            c.SetPasswordSHA256(m_signWithSHA256Password);
             HookTunnelEventToMonoScript(c);
             c.StartConnection();
             m_tunnel = c;
