@@ -18,7 +18,7 @@ namespace Eloi.WsMetaMaskAuth
     {
         public IMaskSignerCliboardable m_messageSigner;
         public WebSocketConnectionState m_connection=new();
-        public HandshakeConnectionState m_handshake=new ();
+        public HandshakeConnectionState m_handshake=new();
 
         [TextArea(0,10)]
         public string m_signatureSample="";
@@ -32,6 +32,8 @@ namespace Eloi.WsMetaMaskAuth
         public TrafficOutQueue m_pushInTunnel = new();
         [Tooltip("If the server allows SHA256 connection.")]
         public string m_passwordSha256;
+
+        //public string pfxText; I AM HERE
 
         ~WebsocketConnectionMetaMaskTunneling()
         {

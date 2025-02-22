@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.WebSockets;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +14,8 @@ namespace Eloi.WsMetaMaskAuth
 {
     public class EthMaskTunnelingTaskRunUtility
     {
-
+        public string m_pfxTextFileContent;
+        public string m_pfxPassword;
         public static void StartRunnningTunnel(WebsocketConnectionMetaMaskTunneling tunnel)
         {
             if (tunnel.HasStarted())
@@ -30,15 +32,24 @@ namespace Eloi.WsMetaMaskAuth
         public static async Task ConnectAndRun(WebsocketConnectionMetaMaskTunneling tunnel)
         {
             tunnel.m_connection.SetLaunchState(LaunchState.Launched);
+
             using (ClientWebSocket ws = new ClientWebSocket())
             {
                 HandshakeConnectionState handshake = tunnel.m_handshake;
                 tunnel.m_connection.m_websocket = ws;
                 tunnel.m_handshake.ResetToNewHandshake();
+
+                
                 try
                 {
                     string serverUri = tunnel.m_connection.m_serverUri;
-                    await ws.ConnectAsync(new Uri(serverUri), CancellationToken.None);
+                    //if (m_)
+                        await ws.ConnectAsync(new Uri(serverUri), CancellationToken.None);
+                    //else { 
+                    //    X509Certificate2 cert = new X509Certificate2()
+
+                    //    ws.Options.ClientCertificates.Add()
+                    //}
 
                     tunnel.m_connection.m_runningListener = Task.Run(() => ReceiveMessages(tunnel));
                     tunnel.m_connection.SetLaunchState(LaunchState.TaskCreated);

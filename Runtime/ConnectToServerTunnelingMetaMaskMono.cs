@@ -32,6 +32,15 @@ namespace Eloi.WsMetaMaskAuth
         public float m_reconnectDelay = 5;
 
 
+        public bool IsActiveInHierarchy()
+        {
+            return gameObject.activeInHierarchy;
+        }
+        public bool IsNotActiveInHierarchy()
+        {
+            return !gameObject.activeInHierarchy;
+        }
+
       
         public void GetDefaultPasswordSHA256(out string password)
         {
@@ -74,7 +83,7 @@ namespace Eloi.WsMetaMaskAuth
 
             SetSha256DefaultPasswordFromInspector();
         }
-        void Start()
+        void OnEnable()
         {
             StartClient();
 
@@ -240,10 +249,14 @@ namespace Eloi.WsMetaMaskAuth
 
         public void PushMessageText(string textToSend)
         {
+            if (IsNotActiveInHierarchy())
+                return;
             m_tunnel.EnqueueTextMessages(textToSend);
         }
         public void PushMessageBytes(byte[] bytesToSend)
         {
+            if (IsNotActiveInHierarchy())
+                return;
             m_tunnel.EnqueueBinaryMessages(bytesToSend);
         }
         public int m_previousInteger = 0;
@@ -265,6 +278,8 @@ namespace Eloi.WsMetaMaskAuth
 
         public void PushMessageInteger4BytesLE(int value)
         {
+            if (IsNotActiveInHierarchy())
+                return;
             m_previousInteger = value;
             m_tunnel.EnqueueBinaryMessages(BitConverter.GetBytes(value));
         }
@@ -301,6 +316,8 @@ namespace Eloi.WsMetaMaskAuth
         }
         public void PushMessageIntegerIID(int value, ulong tickUtcTimestamp)
         {
+            if (IsNotActiveInHierarchy())
+                return;
             byte[] localBytes = new byte[12];
             m_previousInteger = value;
             BitConverter.GetBytes(value).CopyTo(localBytes, 0);
