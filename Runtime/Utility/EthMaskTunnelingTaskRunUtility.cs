@@ -159,6 +159,7 @@ namespace Eloi.WsMetaMaskAuth
                             else if (receivedMessage.ToUpper().StartsWith("HELLO "))
                             {
                                 string[] splitPiece = receivedMessage.Split(" ");
+                                UnityEngine.Debug.Log($"RR Received: {receivedMessage}");
                                 if (splitPiece.Length >= 2)
                                 {
                                     if (int.TryParse(splitPiece[1], out int index))

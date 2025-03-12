@@ -1,13 +1,14 @@
+using Eloi.WsMetaMaskAuth;
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Events;
 using static Eloi.WsMetaMaskAuth.MetaMaskTunneling;
 namespace Eloi.WsMetaMaskAuth
 {
-
-
     /// <summary>
     /// I am a class that allows a websocket connection to be established with a server supporting a MetaMask clipboard connection.
     /// </summary>
@@ -50,16 +51,36 @@ namespace Eloi.WsMetaMaskAuth
         [ContextMenu("SHA256 the password field")]
         public void SetSha256DefaultPasswordFromInspector()
         {
-            ParseToSHA256(m_signWithSHA256Password);
+            ParsePasswordToSHA256(m_signWithSHA256Password, out m_signWithSHA256Password);
         }
 
-       
-
-        public string ParseToSHA256(string password)
+        public void SetSha256Password(string password)
         {
-            Bit4096B58Pkcs1SHA256.
-                TextToSHA256(password, out string hashed);
-            return hashed;
+            ParsePasswordToSHA256(password, out m_signWithSHA256Password);
+        }
+        public void SetSha256PasswordAndRemoveSignHolder(string password)
+        {
+            SetSha256Password(password);
+            RemoveSignHolder();
+        }
+        [ContextMenu("Remove Sign Holder")]
+        public void RemoveSignHolder()
+        {
+            m_signerReference = null;
+        }
+
+        public void ParsePasswordToSHA256(string password, out string passwordSHA256)
+        {
+            if (password.Length <= 62)
+            {
+                Bit4096B58Pkcs1SHA256.
+                    TextToSHA256(password, out passwordSHA256);
+            }
+            else {
+
+                passwordSHA256 = password;
+            }
+
         }
 
 
@@ -336,14 +357,11 @@ namespace Eloi.WsMetaMaskAuth
             utcNtpTickTime = tick + m_tickOffsetLocalToNtp;
 
         }
-
-
         public long m_tickOffsetLocalToNtp;
 
-        public void SetNtpOffsetLocalToOffset(long offset)
+        public void SetNtpOffsetLocalToServerMilliseconds(long offsetInMilliseconds)
         {
-            m_tickOffsetLocalToNtp = offset;
+            m_tickOffsetLocalToNtp = offsetInMilliseconds;
         }
-
     }
 }

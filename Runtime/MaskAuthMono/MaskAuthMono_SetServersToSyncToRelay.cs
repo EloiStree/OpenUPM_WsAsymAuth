@@ -1,0 +1,54 @@
+﻿using UnityEngine;
+using UnityEngine.Events;
+namespace Eloi.WsMetaMaskAuth
+{
+    public class MaskAuthMono_SetServersToSyncToRelay : MonoBehaviour
+    {
+        public string m_networkTimeProtocolServer = "apint.ddns.net";
+        public string m_websocketServer = "ws://apint.ddns.net:4615/";
+
+        public UnityEvent<string> m_onNetworkTimeProtocolUpdated;
+        public UnityEvent<string> m_onWebsocketServerUpdated;
+
+        public bool m_relayAtAwake = true;
+
+        private void Awake()
+        {
+            if (m_relayAtAwake)
+            {
+                SetServers(m_networkTimeProtocolServer, m_websocketServer);
+            }
+        }
+
+        [ContextMenu("RaspberryPi.Local")]
+        public void SetWithRaspberryPiLocal()
+        {
+            SetNetworkTimeProtocol("raspberrypi.local");
+            SetWebSocketServer("ws://raspberrypi.local:4615/");
+        }
+
+        [ContextMenu("Server APInt IO")]
+        public void SetWithAPIntIO()
+        {
+            SetNetworkTimeProtocol("apint.ddns.net");
+            SetWebSocketServer("ws://apint.ddns.net:4615/");
+        }
+
+        public void SetNetworkTimeProtocol(string server)
+        {
+            m_networkTimeProtocolServer = server;
+            m_onNetworkTimeProtocolUpdated.Invoke(m_networkTimeProtocolServer);
+        }
+        public void SetWebSocketServer(string server) {
+            m_websocketServer = server;
+            m_onWebsocketServerUpdated.Invoke(m_websocketServer);
+        }
+
+        public void SetServers(string ntpServer, string websocketServer)
+        {
+            SetNetworkTimeProtocol(ntpServer);
+            SetWebSocketServer(websocketServer);
+        }
+
+    }
+}

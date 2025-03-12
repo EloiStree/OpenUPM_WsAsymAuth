@@ -74,7 +74,7 @@ namespace Eloi.WsMetaMaskAuth
             m_connection.m_serverUri= serverURI;
             m_messageSigner = signer;
             if (m_messageSigner != null)
-                m_messageSigner.GetClipboardSignedMessage("Hello Tunnel", out m_signatureSample);
+                m_messageSigner.GetClipboardSignedMessage("Hello ", out m_signatureSample);
         }
         public void SetPasswordSHA256(string sha256SignIn)
         {

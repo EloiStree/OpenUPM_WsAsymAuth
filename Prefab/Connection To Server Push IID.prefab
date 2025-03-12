@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8625488949941170005}
+  - component: {fileID: 3299860390327014505}
+  - component: {fileID: 416868097473223586}
   - component: {fileID: 6903043049415682159}
   m_Layer: 0
   m_Name: Connection To Server Push IID
@@ -32,6 +34,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3299860390327014505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080335673068144817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6418af6c7dd776d49b27c7ec67de338d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_tunnel: {fileID: 6903043049415682159}
+  m_ntpOffsetToUseInMilliseconds: 0
+--- !u!114 &416868097473223586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080335673068144817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b257484c9ab171142a33f7cccf2c088a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_tunnel: {fileID: 6903043049415682159}
+  m_unityThreadListener:
+    m_defaultIndexIfNone: -1
+    m_lastReceived:
+      m_index: 0
+      m_value: 0
+      m_date: 0
+    m_integerReceived:
+      m_PersistentCalls:
+        m_Calls: []
+    m_indexIntegerReceived:
+      m_PersistentCalls:
+        m_Calls: []
+    m_indexIntegerDateReceived:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &6903043049415682159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_serverUri: ws://193.150.14.47:4615/
   m_signerReference: {fileID: 0}
+  m_signWithSHA256Password: 
   m_tunnel:
     m_connection:
       m_launchState: 0
@@ -83,6 +128,7 @@ MonoBehaviour:
       isRunningListener: 0
       isWebsocketConnected: 0
       m_websocketState: 0
+    m_passwordSha256: 
   m_autoStart: 1
   m_autoReconnect: 1
   m_reconnectDelay: 5
@@ -93,3 +139,4 @@ MonoBehaviour:
     isWebsocketConnected: 0
     m_websocketState: 0
   m_previousInteger: 0
+  m_tickOffsetLocalToNtp: 0

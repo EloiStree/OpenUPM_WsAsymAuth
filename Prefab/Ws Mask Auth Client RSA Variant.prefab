@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8433328772190569432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6048692133894856153}
+  - component: {fileID: 8082712409881039618}
+  - component: {fileID: 367825355630504985}
+  m_Layer: 0
+  m_Name: Sign RSA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6048692133894856153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433328772190569432}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.016290653, y: 0.015272987, z: 0.039318506}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1587758849826492257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8082712409881039618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433328772190569432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd3295b7fc68164abdcf2ff1c6964fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyPair:
+    m_publicAddressOriginal: <RSAKeyValue><Modulus>uFn8AZ5tGhACDx5FIcr5YJh0vIElKJvKV32EwL7vlp3tuHBkYfcCFRRSVYSmVQOW6o8r3aO0cB/36+Y6NBKiaL92W92unbt7u9Gyddfwb2wnjzqwjvYHqkOSKU8nHeHq6Lik1mctUGy6td7fy/gu47oEByy2g7oag/zg6CbsN1s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>
+    m_privateKeyOriginal: <RSAKeyValue><Modulus>uFn8AZ5tGhACDx5FIcr5YJh0vIElKJvKV32EwL7vlp3tuHBkYfcCFRRSVYSmVQOW6o8r3aO0cB/36+Y6NBKiaL92W92unbt7u9Gyddfwb2wnjzqwjvYHqkOSKU8nHeHq6Lik1mctUGy6td7fy/gu47oEByy2g7oag/zg6CbsN1s=</Modulus><Exponent>AQAB</Exponent><P>xk34qOlkPUgvEle8E3PilYZHSSMKUAfMSHVam9kYVtdV/E3mb8hiDXsIePD/kz/PZ/dw/hq+zXc7o4eZ9cxITw==</P><Q>7fzESUowyHwuJ+X5x79NAh+ey3SHFUduKw8f4kEp3v7Dgs6BpypzP6ha2SFPDZR64nsIt/7MOOQitiu/1uwRNQ==</Q><DP>o3fS6yq5vuqqIuy/1SlKNwgh62A/OAm1lGVo89/Z+Hw6HWn581uzuHkbWtcPV0raplGLi2xwrN8FAqDdgYmMcQ==</DP><DQ>TWbvZDLYCOyyilF22qtyXWVxXRSqNpaD00dZBFpTRu6vIeUOMBNTZnnYClSWBIGtMen4HPem7j3suDkkbL9cnQ==</DQ><InverseQ>Pikof1cQbTnwZcKJHmOaZPiBeIrZ7FSl7m1eKdxcgr7CoO0Sd1VI3uhF8VLRw+lRgtzFo71xWN7TiB5gJP6ZYw==</InverseQ><D>UcN/VQx6IUQWVbQ8PzeyEVis9eplm7Q1M0a1eXN1+hyDkfkvXI/ceZLwzYMu7qfP6KqlbwErh0t2f0c2a2AUbZVzvGF+yScndCnCm2AyY7wR4f7GuLfWRalGWFHZ3RhehmZjD2I//dnOGMvgXAZBZaopKVABYQD/92Z/TxLMzEk=</D></RSAKeyValue>
+    m_publicKeyB58: pBit4096B58Pkcs1SHA2568arQkFZ8ZJYKVVkCiefn9ckvmUDmF9Qh2QwrDrX63KXs1eUmvAgai9phsXRUzanKkD5qQz8rwc2MQgZh91BTmzSmfdTS3uBxWHTkUkUVvfHWwBVnHUaocqwHW8RJgit845Qus5AWUJn9GRECfapNWp5AGz62iWoimGbWQx45vZkgtswRYuQSXGjh2tL1dLEjUPCNoCPdkY2Q5tJh3m7DyCB1MdFVdtXwRVbKwxkudaVwcuzDimJJgWzzhADT8V9L6Z1M6A1sxtcokk3jpdfKHYaoeYKGQL6sHnHrTDz2XWVPnsLK7PickurddzjC2kL2TBpCkdcdY9fB
+    m_privateKeyB58: PBit4096B58Pkcs1SHA2563TT9g43oGiJ1Hz7LN9zMaTHk2eKbGXYeKvgzCWQpGTaJfthb3P6dtva5EXWqnWGFg4x4JpWy1NM6JqzHG1WdQyrcUThuNFesheDVnhDNXTFUm4qkXqDLvL43png9yn1RQi91pbXzvM66zwaBRuYwj4QA9A16x9oy7d3dL1hrqLvqN3UxGBLUKj2NrKfz5kwZD6DFa2m9a21jjk1QsFsKaWdHNM9VsmtCB6Mw4VxotmHiiamT5dPNdFB6KNNAU8iYS9h5M3LY5SpB3eKwveFeGixjR8Fd3J2Y44hqfLbGnLSwuprQCcf2hiDPi8XtNqbcEK4Swd7AZGJwLsR9ofWZiKfejP5Dngejcq3XCqFYRRq6rhcp3iUm4Rd9qBMJE4X9WCAzaoWit6EDVwrUYvP5ndMywLiq7A5tVwmc7EP9H9cXbRX3m1JZcm9mgszNd1AwgL1SffBXkHHhsWAZEHstGec8oemk7Zh1FfwkEhRoGrkTNufKmLhGa1XzcziK6WjKdViKEe8n2oyvfCk4PSZnAGdX3Leh1W2gN7fUzmbZ1pH7PKEja3EY3RgwBxSoKCKdexa9Rj8K58EKn9fVZMynHqCJMQmkKbV6icfFMhLv9PpbsUMUJSrENqK9TKF59rv1eXkun6G1bmA9rQAZkjWaFWorxwcfQkQ6FHLpXtnZmEiWHf3vBfj94Kb9LgTiEP5ifCZnPZuSWSMu8Ubq42EYrFmu4E5Gc5JogyXa3o3w41nEUW3gaCY3RqpE7As8ZN1jgVKw8hyZoP2y8V6gFfoGFxrdRsFA8rd71FbrgZX24P31j13jdJBFG95G6Ui7ZapGLR62tF5QcnkM2Furq5tz8AC1jtL4URWzzReqyEYreCSWTzJCZGcxUro38pNeXemii9n9enWnzVfUwiqdJXGcWdGvgU65zVh3KjouTbvcE4EN5PkdXEtxhsvCNTad26kWbvXJLYyY1reeRLJqeMskbbNTwwQ27njKzJXvvunts1tHXs4VjP2C6vq3WFL2WeBEBNcVwR9MepWeLuDfkWNHdR1F14hnKumcPspyuPMB6LiZeRaLNs4QJUXoZyqokgRiQTtRwT9KnJzBCabUuqfkBc77qF6W8FUo7VwFaibSjSveGizhULqYMCymjCuM7VkZUaJDKK7QwzDGqXBhXC1F8Ue9m6hoRDgcaBu7rM7sFwxJUT51i4K53QGPJGSe3FE6Hwr3pu3DqvE6anrTMTH8yett94DoGzrXc1
+--- !u!114 &367825355630504985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433328772190569432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff957366052ad604cbf31033094e9558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_keyHolder: {fileID: 8082712409881039618}
+--- !u!1001 &7042291449356410932
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6903043049415682159, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_serverUri
+      value: ws://raspberrypi.local:4615/
+      objectReference: {fileID: 0}
+    - target: {fileID: 6903043049415682159, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_signerReference
+      value: 
+      objectReference: {fileID: 367825355630504985}
+    - target: {fileID: 6903043049415682159, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_signWithSHA256Password
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080335673068144817, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_Name
+      value: Ws Mask Auth Client RSA Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.016290653
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.015272987
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.039318506
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6048692133894856153}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+--- !u!4 &1587758849826492257 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8625488949941170005, guid: 7ba7a2a44cd1e604f8ba3120da92fcbd, type: 3}
+  m_PrefabInstance: {fileID: 7042291449356410932}
+  m_PrefabAsset: {fileID: 0}
