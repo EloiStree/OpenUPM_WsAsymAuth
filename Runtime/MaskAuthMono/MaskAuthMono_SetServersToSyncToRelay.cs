@@ -26,6 +26,20 @@ namespace Eloi.WsMetaMaskAuth
             SetNetworkTimeProtocol("raspberrypi.local");
             SetWebSocketServer("ws://raspberrypi.local:4615/");
         }
+        [ContextMenu("RaspberryPi5.Local")]
+        public void SetWithRaspberryPi5Local()
+            => SetWithRaspberryPiLocal(5);
+
+        [ContextMenu("RaspberryPi4.Local")]
+        public void SetWithRaspberryPi4Local()
+                    => SetWithRaspberryPiLocal(4);
+
+
+        public void SetWithRaspberryPiLocal(int i)
+        {
+            SetNetworkTimeProtocol($"raspberrypi{i}.local");
+            SetWebSocketServer($"ws://raspberrypi{i}.local:4615/");
+        }
 
         [ContextMenu("Server APInt IO")]
         public void SetWithAPIntIO()

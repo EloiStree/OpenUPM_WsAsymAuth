@@ -11,7 +11,8 @@ namespace Eloi.WsMetaMaskAuth
         }
 
         public ConnectToServerTunnelingMetaMaskMono m_tunnel;
-        
+
+        [SerializeField] int m_userIndexDefault = 0;
         [SerializeField] long m_ntpOffsetToUseInMilliseconds = 0;
 
         public void SetNtpOffsetLocalToServerMilliseconds(int offsetInMilliseconds)
@@ -43,7 +44,7 @@ namespace Eloi.WsMetaMaskAuth
         public void PushNtpIntegerInTunnelWithDelayMilliseconds(int integerValue, int millisecondsDelay)
         {
             GetCurrentTimeAsMillisecondsNtp(out long timeInMilliseconds);
-            m_tunnel.PushMessageIntegerIID(integerValue, timeInMilliseconds + millisecondsDelay);
+            m_tunnel.PushIndexIntegerDate(m_userIndexDefault, integerValue, (ulong)(timeInMilliseconds + millisecondsDelay));
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Eloi.WsMetaMaskAuth
         public void PushNtpIndexIntegerInTunnelWithDelayMilliseconds(int index, int integerValue, int millisecondsDelay)
         {
             GetCurrentTimeAsMillisecondsNtp(out long timeInMilliseconds);
-            m_tunnel.PushMessageIntegerIID(integerValue, timeInMilliseconds + millisecondsDelay);
+            m_tunnel.PushIndexIntegerDate(m_userIndexDefault,integerValue,(ulong)( timeInMilliseconds + millisecondsDelay));
         }
         #endregion
 

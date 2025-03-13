@@ -47,9 +47,11 @@ namespace Eloi.WsMetaMaskAuth
             m_tunnel.m_trafficEvent.m_onThreadMessageReceivedBinary -= OnReceivedBinary;
         }
 
+        public bool m_isActiveInHierarchy = false;
         void Update()
         {
-            while(m_waitingToBeOnUnityThread.Count > 0)
+            m_isActiveInHierarchy = this.gameObject.activeInHierarchy;
+            while (m_waitingToBeOnUnityThread.Count > 0)
             {
                 STRUCT_IID_INTEGER s = m_waitingToBeOnUnityThread.Dequeue();
                 m_unityThreadListener.m_lastReceived = s;
@@ -61,7 +63,7 @@ namespace Eloi.WsMetaMaskAuth
 
         private void OnReceivedBinary(byte[] message)
         {
-            if (message != null && this.gameObject.activeInHierarchy )
+            if (message != null && m_isActiveInHierarchy)
             {
                 if (message.Length == 4)
                 {

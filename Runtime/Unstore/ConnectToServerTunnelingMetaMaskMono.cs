@@ -285,6 +285,15 @@ namespace Eloi.WsMetaMaskAuth
 
 
 
+        public void PushIndexIntegerDate(int index, int value, ulong date) {
+
+            byte[] localBytes = new byte[16];
+            BitConverter.GetBytes(index).CopyTo(localBytes, 0);
+            BitConverter.GetBytes(value).CopyTo(localBytes, 4);
+            BitConverter.GetBytes(date).CopyTo(localBytes, 8);
+            m_tunnel.EnqueueBinaryMessages(localBytes);
+        }
+
 
         [ContextMenu("Push random integer LE")]
         public void PushRandomInteger4Bytes()
