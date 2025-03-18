@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_tunnel: {fileID: 6903043049415682159}
+  m_userIndexDefault: 0
   m_ntpOffsetToUseInMilliseconds: 0
 --- !u!114 &416868097473223586
 MonoBehaviour:
@@ -177,6 +178,7 @@ MonoBehaviour:
     m_indexIntegerDateReceived:
       m_PersistentCalls:
         m_Calls: []
+  m_isActiveInHierarchy: 0
 --- !u!114 &6903043049415682159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60470bb28138c0d4180e2b466cf7f7e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_serverUri: ws://193.150.14.47:4615/
+  m_serverUri: ws://raspberrypi.local:4615/
   m_signerReference: {fileID: 0}
   m_signWithSHA256Password: 
   m_tunnel:

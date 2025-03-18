@@ -15,7 +15,7 @@ namespace Eloi.WsMetaMaskAuth
     public class ConnectToServerTunnelingMetaMaskMono : MonoBehaviour
     {
         [Header("Set Target")]
-        public string m_serverUri = "ws://193.150.14.47:4615/";
+        public string m_serverUri = "ws://raspberrypi.local:4615/";
 
         [Header("Set Crpyto Signer")]
         public MaskSignerMono_AbstractClipboardSigner m_signerReference;
@@ -293,8 +293,7 @@ namespace Eloi.WsMetaMaskAuth
             BitConverter.GetBytes(date).CopyTo(localBytes, 8);
             m_tunnel.EnqueueBinaryMessages(localBytes);
         }
-
-
+       
         [ContextMenu("Push random integer LE")]
         public void PushRandomInteger4Bytes()
         {
@@ -329,15 +328,15 @@ namespace Eloi.WsMetaMaskAuth
 
         public void PushMessageIntegerIIDWithSecondsDelay(int value, float delayInSeconds)
         {
-            GetCurrentNtpTimeNowUTC(out long timeInTick);
-            timeInTick += (long)(delayInSeconds * TimeSpan.TicksPerSecond);
-            PushMessageIntegerIID(value, timeInTick);
+            GetCurrentTimeAsMillisecondsNtp(out long timeInMS);
+            timeInMS += (long)(delayInSeconds * 1000);
+            PushMessageIntegerIID(value, timeInMS);
         }
 
         public void PushMessageIntegerIID(int value)
         {
-            GetCurrentNtpTimeNowUTC(out long timeInTick);
-            PushMessageIntegerIID(value, timeInTick);
+            GetCurrentTimeAsMillisecondsNtp(out long timeInMS);
+            PushMessageIntegerIID(value, timeInMS);
         }
         public void PushMessageIntegerIID(int value, long tickUtcTimestamp)
         {
@@ -360,17 +359,25 @@ namespace Eloi.WsMetaMaskAuth
             m_tunnel.PushClampedBytesAsIID(bytes);
         }
 
-        public void GetCurrentNtpTimeNowUTC(out long utcNtpTickTime)
-        {
-            long tick = DateTime.UtcNow.Ticks;
-            utcNtpTickTime = tick + m_tickOffsetLocalToNtp;
-
-        }
-        public long m_tickOffsetLocalToNtp;
+        public long m_millisecondsOffsetLocalToNtp;
 
         public void SetNtpOffsetLocalToServerMilliseconds(long offsetInMilliseconds)
         {
-            m_tickOffsetLocalToNtp = offsetInMilliseconds;
+            m_millisecondsOffsetLocalToNtp = offsetInMilliseconds;
         }
+
+        public void GetCurrentTimeAsMillisecondsNtp(out long timeInMilliseconds)
+        {
+            long milliseconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            milliseconds += m_millisecondsOffsetLocalToNtp ;
+            timeInMilliseconds = milliseconds;
+        }
+        public void GetCurrentTimeAsTickNtp(out long timeinTick)
+        {
+            long milliseconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            milliseconds += m_millisecondsOffsetLocalToNtp * 10000;
+            timeinTick = milliseconds;
+        }
+
     }
 }

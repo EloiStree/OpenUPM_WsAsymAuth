@@ -47,6 +47,18 @@ namespace Eloi.WsMetaMaskAuth
             SetNetworkTimeProtocol("apint.ddns.net");
             SetWebSocketServer("ws://apint.ddns.net:4615/");
         }
+        [ContextMenu("Server Home APInt IO")]
+        public void SetWithAPIntIOHome()
+        {
+            SetNetworkTimeProtocol("apint-home.ddns.net");
+            SetWebSocketServer("ws://apint-home.ddns.net:4615/");
+        }
+        [ContextMenu("Server Gaming APInt IO")]
+        public void SetWithAPIntIOGaming()
+        {
+            SetNetworkTimeProtocol("apint-gaming.ddns.net");
+            SetWebSocketServer("ws://apint-gaming.ddns.net:4615/");
+        }
 
         public void SetNetworkTimeProtocol(string server)
         {
