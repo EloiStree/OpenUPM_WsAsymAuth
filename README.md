@@ -7,7 +7,7 @@ This setup allows any public-private key system to establish a connection handsh
 
 Note: I am not an expert in this field. Do not use this for professional purposes with serious consequences.
 
-See [https://github.com/EloiStree/2025_01_01_HelloMegaMaskPushToIID](https://github.com/EloiStree/2025_01_01_HelloMegaMaskPushToIID) for server example.
+See [https://github.com/EloiStree/2025_01_01_APIntPushIID](https://github.com/EloiStree/2025_01_01_APIntPushIID) for server example.
 
 ### Context  
 
