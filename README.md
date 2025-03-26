@@ -16,15 +16,6 @@ After losing weeks on the topic, I returned to RSA for Unity3D.
 During my exploration of ECC, I realized that I could use a coaster concept with RSA, allowing RSA to work on behalf of the ECC keys.  
 
 
-### See Also  
-
-- [https://github.com/EloiStree/2025_01_01_CreateSignVerifyWithNethereum.git](https://github.com/EloiStree/2025_01_01_CreateSignVerifyWithNethereum.git)  
-  - A working Nethereum code for Windows.  
-  - With [https://github.com/EloiStree/2025_01_01_UnityServerTunnelingMetaMaskUnity.git](https://github.com/EloiStree/2025_01_01_UnityServerTunnelingMetaMaskUnity.git)  
-    - A tunnel that establishes a WebSocket connection with a server using ECC.  
-
-This package is designed to be used in the context of this tunneling package:  
-- [https://github.com/EloiStree/2024_04_04_UnityServerTunnelingRSAUnity](https://github.com/EloiStree/2024_04_04_UnityServerTunnelingRSAUnity)  
 
 ### Related Repositories  
 
@@ -36,11 +27,5 @@ This package is designed to be used in the context of this tunneling package:
     - [https://github.com/EloiStree/2024_08_06_PathTypeReadWrite.git](https://github.com/EloiStree/2024_08_06_PathTypeReadWrite.git)  
 
 
- 
----------------
-**In short:**  
-The goal here is to be able to communicated between library in ETH and Unity in RSA with WebSocket server:
-- https://github.com/EloiStree/OpenUPM_pBit4096B58Pkcs1SHA256
-  - https://github.com/EloiStree/OpenUPM_AsymmetricalClipboardCoaster
-    - https://github.com/EloiStree/OpenUPM_WsMetaMaskAuth
-- https://github.com/EloiStree/OpenUPM_IID.git
+
+
