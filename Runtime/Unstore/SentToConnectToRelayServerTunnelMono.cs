@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
-    public class SentToConnectToRelayServerTunnelingMono : MonoBehaviour
+    public class SentToConnectToRelayServerTunnelMono : MonoBehaviour
     {
 
-        public ConnectToServerTunnelingMetaMaskMono m_connection;
+        public WsConnectToAsymServerMono m_connection;
 
         public Queue<string> m_sentToServerUTF8 = new Queue<string>();
         public Queue<byte[]> m_sentToServerBytes = new Queue<byte[]>();

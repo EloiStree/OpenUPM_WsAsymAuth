@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
     public class IID16BytesToUnityEventMono : MonoBehaviour
     {

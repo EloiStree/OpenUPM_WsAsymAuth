@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
-    public class MaskAuthMono_SetServersToSyncToRelay : MonoBehaviour
+    public class AsymAuthMono_SetServersToSyncToRelay : MonoBehaviour
     {
         public string m_networkTimeProtocolServer = "apint.ddns.net";
         public string m_websocketServer = "ws://apint.ddns.net:4615/";

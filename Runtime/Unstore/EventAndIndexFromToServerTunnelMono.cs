@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
-    public class EventAndIndexFromToServerTunnelingMono : MonoBehaviour
+    public class EventAndIndexFromToServerTunnelMono : MonoBehaviour
     {
 
-        public ConnectToServerTunnelingMetaMaskMono m_source;
+        public WsConnectToAsymServerMono m_source;
         public UnityEvent m_onConnected;
         public UnityEvent m_onDisconnected;
         public UnityEvent m_onHandshakeVerified;

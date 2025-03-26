@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
-    public class EthMaskTunnelingUtility
+    public class AsymmetricalTunnelingUtility
     {
 
         public static byte[] SignData(byte[] data, RSAParameters privateKey)

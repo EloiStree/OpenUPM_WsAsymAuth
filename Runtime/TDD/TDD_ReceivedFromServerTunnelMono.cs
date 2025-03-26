@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
-    public class TDD_ReceivedFromConnectToRelayServerTunnelingMono : MonoBehaviour
+    public class TDD_ReceivedFromServerTunnelMono : MonoBehaviour
     {
         public string m_text = "";
         public List<string> m_logReceivedText = new List<string>();

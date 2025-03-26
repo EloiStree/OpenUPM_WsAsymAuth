@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using UnityEngine;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
-    public class TDD_ConnectToRelayServerTunnelingMono : MonoBehaviour
+    public class TDD_ConnectToRelayServerTunnelMono : MonoBehaviour
     {
-        public ConnectToServerTunnelingMetaMaskMono m_connection;
+        public WsConnectToAsymServerMono m_connection;
 
         public string m_time = "";
 

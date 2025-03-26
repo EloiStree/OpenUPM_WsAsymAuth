@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
     public class MaskAuthMono_RelayReceivedIntegerFromTunnel : MonoBehaviour
     {
 
         private void Reset()
         {
-            m_tunnel = GetComponent<ConnectToServerTunnelingMetaMaskMono>();
+            m_tunnel = GetComponent<WsConnectToAsymServerMono>();
         }
         [System.Serializable]
         public struct STRUCT_IID_INTEGER
@@ -25,7 +25,7 @@ namespace Eloi.WsMetaMaskAuth
                 m_date = date;
             }
         }
-        public ConnectToServerTunnelingMetaMaskMono m_tunnel;
+        public WsConnectToAsymServerMono m_tunnel;
         public Listener m_unityThreadListener = new Listener();
         [System.Serializable]
         public class Listener { 

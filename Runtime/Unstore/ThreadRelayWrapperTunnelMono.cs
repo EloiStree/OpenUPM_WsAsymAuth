@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
     /// <summary>
     /// This class need to be a bit clean;
     /// </summary>
-    public class ThreadRelayWrapperTunnelingMono : MonoBehaviour
+    public class ThreadRelayWrapperTunnelMono : MonoBehaviour
     {
 
 
-        public ConnectToServerTunnelingMetaMaskMono m_toAffect;
+        public WsConnectToAsymServerMono m_toAffect;
         public bool m_useUdpListener = true;
         public bool m_useUdpBroadcaster = true;
         public bool m_useUnityEvent = true;

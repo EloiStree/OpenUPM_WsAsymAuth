@@ -5,7 +5,7 @@ using System.Net;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
     public class FetchDefaultIntegerGamesWebSocketServerMono : MonoBehaviour
     {

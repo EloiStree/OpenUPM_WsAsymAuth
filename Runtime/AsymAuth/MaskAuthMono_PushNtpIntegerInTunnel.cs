@@ -1,16 +1,16 @@
 ﻿using System;
 using UnityEngine;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
     public class MaskAuthMono_PushNtpIntegerInTunnel : MonoBehaviour
     {
 
         private void Reset()
         {
-            m_tunnel = GetComponent<ConnectToServerTunnelingMetaMaskMono>();
+            m_tunnel = GetComponent<WsConnectToAsymServerMono>();
         }
 
-        public ConnectToServerTunnelingMetaMaskMono m_tunnel;
+        public WsConnectToAsymServerMono m_tunnel;
 
         [SerializeField] int m_userIndexDefault = 0;
         [SerializeField] long m_ntpOffsetToUseInMilliseconds = 0;

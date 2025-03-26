@@ -1,4 +1,4 @@
-﻿namespace Eloi.WsMetaMaskAuth
+﻿namespace Eloi.WsAsymAuth
 {
     public abstract class AbstractConnectionToWebSocketClient
     {

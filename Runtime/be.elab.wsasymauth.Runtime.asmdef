@@ -1,5 +1,5 @@
 {
-    "name": "be.elab.metamaskauth",
+    "name": "be.elab.wsasymauth",
     "rootNamespace": "",
     "references": [
         "be.elab.asymsigner",

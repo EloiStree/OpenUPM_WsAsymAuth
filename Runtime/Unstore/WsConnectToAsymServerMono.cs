@@ -1,4 +1,4 @@
-using Eloi.WsMetaMaskAuth;
+using Eloi.WsAsymAuth;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -6,24 +6,24 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
-using static Eloi.WsMetaMaskAuth.MetaMaskTunneling;
-namespace Eloi.WsMetaMaskAuth
+using static Eloi.WsAsymAuth.AsymAuthTunnel;
+namespace Eloi.WsAsymAuth
 {
     /// <summary>
     /// I am a class that allows a websocket connection to be established with a server supporting a MetaMask clipboard connection.
     /// </summary>
-    public class ConnectToServerTunnelingMetaMaskMono : MonoBehaviour
+    public class WsConnectToAsymServerMono : MonoBehaviour
     {
         [Header("Set Target")]
         public string m_serverUri = "ws://raspberrypi.local:4615/";
 
         [Header("Set Crpyto Signer")]
-        public MaskSignerMono_AbstractClipboardSigner m_signerReference;
+        public AsymSignerMono_AbstractClipboardSigner m_signerReference;
         [Tooltip("If you don't use signer and the server support SHA256 login")]
         public string m_signWithSHA256Password = "";
 
-        public WebsocketConnectionMetaMaskTunneling m_tunnel;
-        public MetaMaskTunneling.TraffictInEvent m_trafficEvent;
+        public WebsocketConnectionAsymAuthTunnel m_tunnel;
+        public AsymAuthTunnel.TraffictInEvent m_trafficEvent;
 
 
 
@@ -84,7 +84,7 @@ namespace Eloi.WsMetaMaskAuth
         }
 
 
-        public void SetSignerToUse(MaskSignerMono_AbstractClipboardSigner privateKeySigner)
+        public void SetSignerToUse(AsymSignerMono_AbstractClipboardSigner privateKeySigner)
         {
             m_signerReference = privateKeySigner;
         }
@@ -137,7 +137,7 @@ namespace Eloi.WsMetaMaskAuth
 
 
 
-        public MetaMaskTunneling.DebugRunningState m_runningState;
+        public AsymAuthTunnel.DebugRunningState m_runningState;
         private void Update()
         {
             m_runningState = m_tunnel.m_runningState;
@@ -169,8 +169,8 @@ namespace Eloi.WsMetaMaskAuth
 
         private void LaunchNewConnection()
         {
-            WebsocketConnectionMetaMaskTunneling c = new WebsocketConnectionMetaMaskTunneling();
-            c.SetConnectionInfo(m_serverUri, (IMaskSignerCliboardable)m_signerReference);
+            WebsocketConnectionAsymAuthTunnel c = new WebsocketConnectionAsymAuthTunnel();
+            c.SetConnectionInfo(m_serverUri, (IAsymSignerCliboardable)m_signerReference);
             c.SetPasswordSHA256(m_signWithSHA256Password);
             HookTunnelEventToMonoScript(c);
             c.StartConnection();
@@ -178,7 +178,7 @@ namespace Eloi.WsMetaMaskAuth
         }
 
 
-        private void HookTunnelEventToMonoScript(WebsocketConnectionMetaMaskTunneling c)
+        private void HookTunnelEventToMonoScript(WebsocketConnectionAsymAuthTunnel c)
         {
             c.m_trafficEvent.m_onThreadMessagePushedBinary = OnMessagePushedBinary;
             c.m_trafficEvent.m_onThreadMessagePushedText = OnMessagePushedText;

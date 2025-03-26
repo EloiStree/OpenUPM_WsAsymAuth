@@ -5,18 +5,18 @@ using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
 using UnityEngine;
-using static Eloi.WsMetaMaskAuth.MetaMaskTunneling.WebSocketConnectionState;
+using static Eloi.WsAsymAuth.AsymAuthTunnel.WebSocketConnectionState;
 
 
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
 
-    public class MetaMaskTunneling
+    public class AsymAuthTunnel
 {
     [System.Serializable]
-    public class WebsocketConnectionMetaMaskTunneling
+    public class WebsocketConnectionAsymAuthTunnel
     {
-        public IMaskSignerCliboardable m_messageSigner;
+        public IAsymSignerCliboardable m_messageSigner;
         public WebSocketConnectionState m_connection=new();
         public HandshakeConnectionState m_handshake=new();
 
@@ -35,7 +35,7 @@ namespace Eloi.WsMetaMaskAuth
 
         //public string pfxText; I AM HERE
 
-        ~WebsocketConnectionMetaMaskTunneling()
+        ~WebsocketConnectionAsymAuthTunnel()
         {
             CloseTunnel();
         }
@@ -69,7 +69,7 @@ namespace Eloi.WsMetaMaskAuth
             m_runningState.isStillRunning = m_connection.IsStillRunning();
         }
 
-        public void SetConnectionInfo(string serverURI, IMaskSignerCliboardable signer)
+        public void SetConnectionInfo(string serverURI, IAsymSignerCliboardable signer)
         {
             m_connection.m_serverUri= serverURI;
             m_messageSigner = signer;
@@ -84,7 +84,7 @@ namespace Eloi.WsMetaMaskAuth
             public void StartConnection()
         {
             if (!HasStarted()) { 
-                EthMaskTunnelingTaskRunUtility.StartRunnningTunnel(this);
+                AsymAuthTunnelingTaskRunUtility.StartRunnningTunnel(this);
             }
 
         }

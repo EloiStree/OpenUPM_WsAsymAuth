@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-namespace Eloi.WsMetaMaskAuth
+namespace Eloi.WsAsymAuth
 {
-    public class MaskAuthMono_SetServersOnlineOffline : MonoBehaviour {
+    public class AsymAuthMono_SetServersOnlineOffline : MonoBehaviour {
 
-        public MaskAuthMono_SetServersToSyncToRelay m_setServer;
+        public AsymAuthMono_SetServersToSyncToRelay m_setServer;
         public ConnectionType m_connectionType = ConnectionType.ONLINE_IF_INTERNET_THEN_LAN;
         public TargetServer m_lanServer = new TargetServer("LAN LOCAL PI", "raspberrypi.local","ws://raspberrypi.local:4615/");
         public TargetServer m_onlineServer = new TargetServer("ONLINE PI", "apint.ddns.net", "ws://apint.ddns.net:4615/");
