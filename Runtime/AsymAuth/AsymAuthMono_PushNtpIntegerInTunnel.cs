@@ -2,7 +2,7 @@
 using UnityEngine;
 namespace Eloi.WsAsymAuth
 {
-    public class MaskAuthMono_PushNtpIntegerInTunnel : MonoBehaviour
+    public class AsymAuthMono_PushNtpIntegerInTunnel : MonoBehaviour
     {
 
         private void Reset()

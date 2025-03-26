@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 namespace Eloi.WsAsymAuth
 {
-    public class MaskAuthMono_RelayReceivedIntegerFromTunnel : MonoBehaviour
+    public class AsymAuthMono_RelayReceivedIntegerFromTunnel : MonoBehaviour
     {
 
         private void Reset()

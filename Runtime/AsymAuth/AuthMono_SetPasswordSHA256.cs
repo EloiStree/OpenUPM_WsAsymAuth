@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MaskAuthMono_SetPasswordSHA256 : MonoBehaviour
+public class AuthMono_SetPasswordSHA256 : MonoBehaviour
 {
 
 
