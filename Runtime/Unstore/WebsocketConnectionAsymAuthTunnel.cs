@@ -16,7 +16,7 @@ namespace Eloi.WsAsymAuth
     [System.Serializable]
     public class WebsocketConnectionAsymAuthTunnel
     {
-        public IAsymSignerCliboardable m_messageSigner;
+        public IAsymSignerClipboardable m_messageSigner;
         public WebSocketConnectionState m_connection=new();
         public HandshakeConnectionState m_handshake=new();
 
@@ -69,7 +69,7 @@ namespace Eloi.WsAsymAuth
             m_runningState.isStillRunning = m_connection.IsStillRunning();
         }
 
-        public void SetConnectionInfo(string serverURI, IAsymSignerCliboardable signer)
+        public void SetConnectionInfo(string serverURI, IAsymSignerClipboardable signer)
         {
             m_connection.m_serverUri= serverURI;
             m_messageSigner = signer;

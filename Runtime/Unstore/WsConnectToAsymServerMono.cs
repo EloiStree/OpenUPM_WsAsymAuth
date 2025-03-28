@@ -145,7 +145,7 @@ namespace Eloi.WsAsymAuth
         private void LaunchNewConnection()
         {
             WebsocketConnectionAsymAuthTunnel c = new WebsocketConnectionAsymAuthTunnel();
-            c.SetConnectionInfo(m_serverUri, (IAsymSignerCliboardable)m_signerReference);
+            c.SetConnectionInfo(m_serverUri, (IAsymSignerClipboardable)m_signerReference);
             HookTunnelEventToMonoScript(c);
             c.StartConnection();
             m_tunnel = c;

@@ -37,7 +37,7 @@ namespace Eloi.WsAsymAuth
                 if (m_continueAddingClients)
                 {
                     WebsocketConnectionAsymAuthTunnel tunnel = new WebsocketConnectionAsymAuthTunnel();
-                    m_singerBuilder.BuildSigner(out IAsymSignerCliboardable randomSigner);
+                    m_singerBuilder.BuildSigner(out IAsymSignerClipboardable randomSigner);
                     tunnel.SetConnectionInfo(m_serverUri, randomSigner);
                     m_tunnels.Add(tunnel);
                     tunnel.StartConnection();
