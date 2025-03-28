@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 namespace Eloi.WsAsymAuth
 {
     public class AsymAuthMono_PushNtpIntegerInTunnel : MonoBehaviour
@@ -13,26 +14,22 @@ namespace Eloi.WsAsymAuth
         public WsConnectToAsymServerMono m_tunnel;
 
         [SerializeField] int m_userIndexDefault = 0;
-        [SerializeField] long m_ntpOffsetToUseInMilliseconds = 0;
+        public Listener m_unityThreadListener = new Listener();
+        [System.Serializable]
+        public class Listener
+        {
+            public int m_defaultIndexIfNone = -1;
+            public UnityEvent<int> m_integerReceived;
+            public UnityEvent<int, int> m_indexIntegerReceived;
+            public UnityEvent<int, int, ulong> m_indexIntegerDateReceived;
+        }
 
-        public void SetNtpOffsetLocalToServerMilliseconds(int offsetInMilliseconds)
-        {
-            m_ntpOffsetToUseInMilliseconds = offsetInMilliseconds;
-        }
-        public void SetNtpOffsetLocalToServerMilliseconds(long offsetInMilliseconds)
-        {
-            m_ntpOffsetToUseInMilliseconds = offsetInMilliseconds;
-        }
+       
         public void GetCurrentTimeAsMillisecondsNtp( out long timeInMilliseconds)
         {
-            GetCurrentTimeAsMillisecondsNtp(m_ntpOffsetToUseInMilliseconds, out timeInMilliseconds);
+            m_tunnel.GetCurrentTimeAsMillisecondsNtp(out timeInMilliseconds);
         }
-        public static void GetCurrentTimeAsMillisecondsNtp(long millisecondsOffset, out long timeInMilliseconds)
-        {
-            long milliseconds = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            milliseconds += millisecondsOffset * 10000;
-            timeInMilliseconds = milliseconds;
-        }
+        
 
         #region Push NTP Integer
 
@@ -44,7 +41,12 @@ namespace Eloi.WsAsymAuth
         public void PushNtpIntegerInTunnelWithDelayMilliseconds(int integerValue, int millisecondsDelay)
         {
             GetCurrentTimeAsMillisecondsNtp(out long timeInMilliseconds);
-            m_tunnel.PushIndexIntegerDate(m_userIndexDefault, integerValue, (ulong)(timeInMilliseconds + millisecondsDelay));
+            ulong dateSent = (ulong)(timeInMilliseconds + millisecondsDelay);
+            m_tunnel.PushIndexIntegerDate(m_userIndexDefault, integerValue, dateSent);
+            m_unityThreadListener.m_integerReceived.Invoke(integerValue);
+            m_unityThreadListener.m_indexIntegerReceived.Invoke(m_userIndexDefault, integerValue);
+            m_unityThreadListener.m_indexIntegerDateReceived.Invoke(m_userIndexDefault, integerValue, dateSent);
+          
         }
 
         /// <summary>

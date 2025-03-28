@@ -19,8 +19,7 @@ namespace Eloi.WsAsymAuth
 
         [Header("Set Crpyto Signer")]
         public AsymSignerMono_AbstractClipboardSigner m_signerReference;
-        [Tooltip("If you don't use signer and the server support SHA256 login")]
-        public string m_signWithSHA256Password = "";
+   
 
         public WebsocketConnectionAsymAuthTunnel m_tunnel;
         public AsymAuthTunnel.TraffictInEvent m_trafficEvent;
@@ -42,27 +41,7 @@ namespace Eloi.WsAsymAuth
             return !gameObject.activeInHierarchy;
         }
 
-      
-        public void GetDefaultPasswordSHA256(out string password)
-        {
-            password = m_signWithSHA256Password;
-        }
-
-        [ContextMenu("SHA256 the password field")]
-        public void SetSha256DefaultPasswordFromInspector()
-        {
-            ParsePasswordToSHA256(m_signWithSHA256Password, out m_signWithSHA256Password);
-        }
-
-        public void SetSha256Password(string password)
-        {
-            ParsePasswordToSHA256(password, out m_signWithSHA256Password);
-        }
-        public void SetSha256PasswordAndRemoveSignHolder(string password)
-        {
-            SetSha256Password(password);
-            RemoveSignHolder();
-        }
+    
         [ContextMenu("Remove Sign Holder")]
         public void RemoveSignHolder()
         {
@@ -99,11 +78,7 @@ namespace Eloi.WsAsymAuth
         {
             m_tunnel.CloseTunnel();
         }
-        private void Awake()
-        {
-
-            SetSha256DefaultPasswordFromInspector();
-        }
+        
         void OnEnable()
         {
             StartClient();
@@ -171,7 +146,6 @@ namespace Eloi.WsAsymAuth
         {
             WebsocketConnectionAsymAuthTunnel c = new WebsocketConnectionAsymAuthTunnel();
             c.SetConnectionInfo(m_serverUri, (IAsymSignerCliboardable)m_signerReference);
-            c.SetPasswordSHA256(m_signWithSHA256Password);
             HookTunnelEventToMonoScript(c);
             c.StartConnection();
             m_tunnel = c;

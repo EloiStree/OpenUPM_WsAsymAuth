@@ -34,6 +34,7 @@ namespace Eloi.WsAsymAuth
             public UnityEvent<int> m_integerReceived;
             public UnityEvent<int, int> m_indexIntegerReceived;
             public UnityEvent<int, int, ulong> m_indexIntegerDateReceived;
+            public UnityEvent<int, int, ulong,ulong> m_indexIntegerDateAndNowReceived;
         }
 
         public Queue<STRUCT_IID_INTEGER> m_waitingToBeOnUnityThread = new System.Collections.Generic.Queue<STRUCT_IID_INTEGER>();
@@ -57,7 +58,9 @@ namespace Eloi.WsAsymAuth
                 m_unityThreadListener.m_lastReceived = s;
                 m_unityThreadListener.m_integerReceived.Invoke(s.m_value);
                 m_unityThreadListener.m_indexIntegerReceived.Invoke(s.m_index, s.m_value);
-                m_unityThreadListener.m_indexIntegerDateReceived.Invoke(s.m_index, s.m_value, s.m_date);                
+                m_unityThreadListener.m_indexIntegerDateReceived.Invoke(s.m_index, s.m_value, s.m_date);
+                m_tunnel.GetCurrentTimeAsMillisecondsNtp(out long now);
+                m_unityThreadListener.m_indexIntegerDateAndNowReceived.Invoke(s.m_index, s.m_value, s.m_date, (ulong)now);
             }
         }
 
