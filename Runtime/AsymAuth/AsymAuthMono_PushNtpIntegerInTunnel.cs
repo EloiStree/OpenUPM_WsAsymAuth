@@ -14,6 +14,7 @@ namespace Eloi.WsAsymAuth
         public WsConnectToAsymServerMono m_tunnel;
 
         [SerializeField] int m_userIndexDefault = 0;
+        [SerializeField] bool m_createRandomIndexDefaultAtAwake = true;
         public Listener m_unityThreadListener = new Listener();
         [System.Serializable]
         public class Listener
@@ -131,5 +132,15 @@ namespace Eloi.WsAsymAuth
         public void PushNtpRandomFrom0To10() => PushNtpRandom(0, 10);
         [ContextMenu("Random From 0 To 100")]
         public void PushNtpRandomFrom0To100() => PushNtpRandom(0,100);
+
+        private void Awake()
+        {
+            if (m_createRandomIndexDefaultAtAwake)
+            {
+                m_userIndexDefault = UnityEngine.Random.Range(-1, int.MinValue);
+            }
+        }
     }
+
+
 }
