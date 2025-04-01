@@ -36,7 +36,7 @@ namespace Eloi.WsAsymAuth
             public UnityEvent<int, int, ulong> m_indexIntegerDateReceived;
             public UnityEvent<int, int, ulong,ulong> m_indexIntegerDateAndNowReceived;
         }
-
+        public STRUCT_IID_INTEGER [] m_debugList =new STRUCT_IID_INTEGER[10];
         public Queue<STRUCT_IID_INTEGER> m_waitingToBeOnUnityThread = new System.Collections.Generic.Queue<STRUCT_IID_INTEGER>();
 
          void OnEnable()
@@ -61,7 +61,17 @@ namespace Eloi.WsAsymAuth
                 m_unityThreadListener.m_indexIntegerDateReceived.Invoke(s.m_index, s.m_value, s.m_date);
                 m_tunnel.GetCurrentTimeAsMillisecondsNtp(out long now);
                 m_unityThreadListener.m_indexIntegerDateAndNowReceived.Invoke(s.m_index, s.m_value, s.m_date, (ulong)now);
+
+                if (m_debugList.Length > 0) { 
+                    for (int i = m_debugList.Length - 1; i > 0; i--)
+                    {
+                        m_debugList[i] = m_debugList[i - 1];
+                    }
+                    m_debugList[0] = s;
+                }
+
             }
+
         }
 
         private void OnReceivedBinary(byte[] message)
