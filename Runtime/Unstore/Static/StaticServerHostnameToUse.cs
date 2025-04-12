@@ -1,30 +1,39 @@
+using System;
 using System.IO;
 using UnityEngine;
 
-public class StaticServerHostnameToUse : MonoBehaviour
+namespace Eloi.WsAsymAuth {
+    public class StaticServerHostnameToUse 
 {
 
-    public static string m_hostnameToUse= "raspberrypi.local";
-    public static void SetHostnameAsRaspberryPi() => SetHostenameToUse("raspberrypi.local", true);
-    public static void SetHostnameAsApintDefaultServer() => SetHostenameToUse("apint.ddns.net", true);
-    public static void SetHostnameAsApintAsLocalhost() => SetHostenameToUse("127.0.0.1", true);
+    public static string m_hostnameToUse= null;
+    public static void SetHostnameAsRaspberryPi()           => SetHostenameToUse("raspberrypi.local", true);
+    public static void SetHostnameAsApintDefaultServer()    => SetHostenameToUse("apint.ddns.net", true);
+    public static void SetHostnameAsApintAsLocalhost()      => SetHostenameToUse("127.0.0.1", true);
 
     public static void GetHostenameToUse(out string hostname)
     {
+        if (m_hostnameToUse == null)
+        {
+            LoadHostnameSavedOrCreateDefault();
+        }
         hostname = m_hostnameToUse;
     }
     public static string GetHostenameToUse()
     {
-        return m_hostnameToUse;
+        GetHostenameToUse(out string hostname);
+        return hostname;
     }
 
     public static void SetHostenameToUse(string hostname, bool andSaveItAsFile=true)
     {
         m_hostnameToUse = hostname;
+
         if (andSaveItAsFile)
         {
             SaveHostnameAsFile();
         }
+        m_onHostnameChanged?.Invoke(m_hostnameToUse);
 
     }
     public static string GetHostnameStoringFilePath()
@@ -32,10 +41,6 @@ public class StaticServerHostnameToUse : MonoBehaviour
         return Application.persistentDataPath+"/ServerHostname/Hostname.txt";
     }
 
-    static StaticServerHostnameToUse()
-    {
-        LoadHostnameSavedOrCreateDefault();
-    }
 
     public static void SaveHostnameAsFile()
     {
@@ -66,4 +71,18 @@ public class StaticServerHostnameToUse : MonoBehaviour
 
         }
     }
+    static Action<string> m_onHostnameChanged;
+    public static void AddOnSetListener(Action<string> onHostnameChanged)
+    {
+        m_onHostnameChanged += onHostnameChanged;
+
+
+    }
+
+    public static void RemoveOnSetListener(Action<string> onHostnameChanged)
+    {
+        m_onHostnameChanged -= onHostnameChanged;
+    }
+}
+
 }
