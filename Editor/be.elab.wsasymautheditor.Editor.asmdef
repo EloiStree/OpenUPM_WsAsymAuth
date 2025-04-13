@@ -2,7 +2,7 @@
     "name": "be.elab.wsasymautheditor",
     "rootNamespace": "",
     "references": [
-        "be.elab.metamaskauth"
+        "be.elab.wsasymauth"
     ],
     "includePlatforms": [
         "Editor"
