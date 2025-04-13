@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +18,7 @@ public class StaticServerHostnameToUseMono:MonoBehaviour
 
     [ContextMenu("Set 127.0.0.1 Hostname")]
     public void SetHostnameAsApintAsLocalhost() =>
-        StaticServerHostnameToUse.SetHostnameAsApintDefaultServer();
+        StaticServerHostnameToUse.SetHostnameAsApintAsLocalhost();
 
 
     public void SetHostname(string hostname)
@@ -29,17 +30,25 @@ public class StaticServerHostnameToUseMono:MonoBehaviour
     {
         StaticServerHostnameToUse.AddOnSetListener(OnHostnameSet);
         StaticServerHostnameToUse.GetHostenameToUse(out m_hostnameToUseDebugField );
-        m_onHostnameSet?.Invoke(m_hostnameToUseDebugField);
+            OnHostnameSetWithCurrent();
     }
-    private void OnEnable()
+
+        private void OnHostnameSetWithCurrent()
+        {
+            OnHostnameSet(m_hostnameToUseDebugField);
+        }
+
+        private void OnEnable()
     {
         StaticServerHostnameToUse.GetHostenameToUse(out m_hostnameToUseDebugField);
-    }
+            OnHostnameSetWithCurrent();
+        }
 
     private void OnDisable()
     {
         StaticServerHostnameToUse.GetHostenameToUse(out m_hostnameToUseDebugField);
-    }
+            OnHostnameSetWithCurrent();
+        }
         private void OnDestroy() { 
         
         StaticServerHostnameToUse.RemoveOnSetListener(OnHostnameSet);
@@ -47,7 +56,8 @@ public class StaticServerHostnameToUseMono:MonoBehaviour
     private void OnHostnameSet(string hostname)
     {
         m_hostnameToUseDebugField = hostname;
-    }
+            m_onHostnameSet?.Invoke(m_hostnameToUseDebugField);
+        }
 }
 
 }
